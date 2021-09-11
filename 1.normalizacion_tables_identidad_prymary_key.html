@@ -1,0 +1,77 @@
+Normalización de la Base de Datos
+
+
+
+<h1>Primera 1FN</h1>
+
+Con llave primaria y que todo sus registros no sean repetidos
+  
+Se dice que una Tabla está en Primera Forma Normal si y sólo si todos sus Campos (Atributos)
+contienen valores atómicos. Esto quiere decir que cada Atributo de la Tabla deberá tener un único valor
+para una ocurrencia de la Entidad. No se permitirán grupos repetitivos.
+
+
+
+<h1>
+Segunda 2FN
+  </h1>
+Una Tabla está en Segunda Forma Normal si y sólo si está en 1FN y todos los Atributos no clave
+dependen por completo de la clave primaria.
+
+<h1>
+Tercera 3FN---Los atributos clave no son independientes  entre si
+  </h1>
+Una Tabla está en Tercera Forma Normal si y sólo si está en 2FN y los atributos no clave son
+independientes entre sí. Esto quiere decir que los valores de los atributos dependen sólo de la clave
+primaria y no dependen de otro Atributo no clave. El valor del Atributo no debe depender del valor de
+otro Atributo no clave.
+
+
+<h1>
+TABLA PACIENTE (SIN NORMALIZAR)
+<h1>
+  
+Nombre pais idMedico medico
+Juan Carlos Ruber España 1 PEREZ, Juan
+Carlos Andrés Montoya México 1 PEREZ, Juan
+Juan Sanchez México 2 Lopez, Mónica
+Juan Sanchez México 2 Lopez, Mónica
+  
+TABLA PACIENTE (1FN)
+  Normalizada
+  
+idPaciente (PK) Nombre pais idMedico medico
+1 Juan Carlos Ruber España 1 PEREZ, Juan
+2 Carlos Andrés Montoya México 1 PEREZ, Juan
+3 Juan Sanchez México 2 Lopez, Mónica
+4 Juan Sanchez México 2 Lopez, Mónica
+  
+  
+TABLA PACIENTE (2FN y 3FN)
+  
+  
+Idpaciente (PK) nombre IdPais
+1 Juan Carlos Ruber ESP
+2 Carlos Andrés Montoya MEX
+3 Juan Sanchez MEX
+4 Juan Sanchez MEX
+  
+
+TABLA PAIS
+IdPais (PK) Pais
+MEX México
+ESP España
+  
+  
+TABLA MEDICO
+IdMedico (PK) Medico
+1 PEREZ, Juan
+2 Lopez, Mónica
+  
+  
+TABLA TURNOPACIENTE
+IdTurno (PK) idPaciente idMedico
+1 1 1
+2 2 1
+3 3 2
+4 4 2
