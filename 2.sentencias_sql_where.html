@@ -1,0 +1,22 @@
+--seleccionar todos los campos de paciente 1 donde apellido sea igual a ramirez
+--Filtrar la cantidad de registro que estamos devolviendo
+SELECT * FROM paciente1 WHERE nombre = 'jorge'
+
+
+--seleccionamos doble filtro a la tabla
+SELECT * FROM paciente1 WHERE apellido = 'ramirez' and nombre='jorge'
+
+
+--Se elimina el registro anteriormente registrado 
+
+
+--eliminar el registro completamente:
+DELETE FROM paciente1 WHERE apellido = 'ramirez' and nombre='jorge'
+
+--actualizar un registro con doble filtro WHERE 
+
+
+UPDATE paciente1 SET observacion = 'observacion modificada' WHERE idPaciente = '10'
+
+--Actualizar tabla  seleccionando el pais BRA donde el apellido sea amezquita y el nombre diego
+UPDATE paciente1 set idPais = 'BRA' WHERE apellido = 'amezquita' and nombre = 'diego'
