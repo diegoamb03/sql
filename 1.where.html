@@ -4,9 +4,14 @@ AVERIGUAMOS EL ID DEL REGISRO CORRESPONDIENTE.
   
  y LUEGO LO ELIMINAMOS DE LA TABLA 
   
- SELECT * FROM paciente1 WHERE apellido = 'mendez'	
-
+SELECT * FROM paciente1 WHERE apellido = 'mendez'	
+#Eliminar un numero de ID
 DELETE FROM paciente1 WHERE idPaciente = 3
   
-  
+#Actualizamos la tabla paciente1 y actualizar todos los campos 
+UPDATE paciente1 SET idPais = 'ARG'  
+
+
+#Actualizamos los campos de observacion
+UPDATE paciente1 SET observacion = 'Pacientes creados desde Interface'
   
