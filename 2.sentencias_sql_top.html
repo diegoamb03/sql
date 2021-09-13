@@ -1,0 +1,16 @@
+trae los primeros registros de la tabla 
+
+
+--Solo 2 primeros registros
+SELECT TOP 2 * FROM paciente1
+
+--registros con filtro
+SELECT TOP 2 * FROM paciente1 WHERE nombre = 'diego'
+
+
+
+
+--Ordenados por fecha
+
+--top 1 ordenado por fecha descendente
+SELECT TOP 10 * from paciente1 ORDER BY fnacimiento DESC
