@@ -1,0 +1,2 @@
+ALTER TABLE paciente1
+ADD FOREIGN KEY (idPais) REFERENCES pais (idPais)
