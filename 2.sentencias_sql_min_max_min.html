@@ -1,0 +1,12 @@
+--Max de la tabla paciente
+SELECT MAX(idPaciente) from paciente1
+
+--Min de la tabla paciente
+SELECT MIN(idPaciente) from paciente1
+
+
+--order by selecciona el campo apellido el min ¿imo id paciente de la tabla agrupado por apellido
+SELECT apellido, MIN(idpaciente) FROM paciente1 GROUP BY apellido
+
+---order by selecciona el campo apellido el minmax ¿imo id paciente de la tabla agrupado por apellido
+SELECT apellido, MAX(idpaciente) FROM paciente1 GROUP BY apellido
