@@ -1,0 +1,157 @@
+INSERT INTO paciente1 (nombre, apellido, fnacimiento, idPais, telefono, email, observacion, fechaAlta) VALUES
+('diego','amezquita','2019-09-01','COL','123','diegoo.0102@hotmail.com','','')
+
+SELECT * FROM paciente1
+
+UPDATE paciente1 SET observacion = 'Pacientes creados desde Interface'
+
+--seleccionar todos los campos de paciente 1 donde apellido sea igual a ramirez
+--Filtrar la cantidad de registro que estamos devolviendo
+SELECT * FROM paciente1 WHERE nombre = 'jorge'
+
+--seleccionamos doble filtro a la tabla
+SELECT * FROM paciente1 WHERE apellido = 'ramirez' and nombre='jorge'
+
+
+--eliminar el registro completamente:
+DELETE FROM paciente1 WHERE apellido = 'ramirez' and nombre='jorge'
+
+--actualizar un registro con doble filtro WHERE 
+
+UPDATE paciente1 SET observacion = 'observacion modificada' WHERE idPaciente = '10'
+UPDATE paciente1 set idPais = 'BRA' WHERE apellido = 'amezquita' and nombre = 'diego'
+
+
+--Solo 2 primeros registros
+SELECT TOP 2 * FROM paciente1
+
+--registros con filtro
+SELECT TOP 2 * FROM paciente1 WHERE nombre = 'diego'
+
+--top 1 ordenado por fecha descendente
+SELECT TOP 10 * from paciente1 ORDER BY fnacimiento DESC
+
+--seleccionar las columnas de la parte de arriba ordenadas de forma de MENOR A MAYOR
+
+SELECT TOP 2 * FROM paciente1 ORDER BY fnacimiento ASC 
+
+
+--Filtrar por campos distintos id paciente y apellido
+
+SELECT DISTINCT idPaciente, apellido FROM paciente1
+
+
+--Filtrar por campos distintos   apellido
+SELECT DISTINCT  apellido FROM paciente1
+
+
+--Agrupas 
+
+where group by apellido
+
+
+SELECT apellido FROM paciente1 GROUP BY apellido
+
+-------------------------------------------------------------
+--Max de la tabla paciente
+SELECT MAX(idPaciente) from paciente1
+
+--Min de la tabla paciente
+SELECT MIN(idPaciente) from paciente1
+
+------------------------------------------------------------------------------------------------------
+
+--order by selecciona el campo apellido el min ¿imo id paciente de la tabla agrupado por apellido
+SELECT apellido, MIN(idpaciente) FROM paciente1 GROUP BY apellido
+
+
+---order by selecciona el campo apellido el min ¿imo id paciente de la tabla agrupado por apellido
+SELECT apellido, MAX(idpaciente) FROM paciente1 GROUP BY apellido
+
+---------------------------------------FUNCIONES DE sql AGRUPADAS
+--util para el total de un campo ventas
+----SUMA O SUMARIZAR CAMPOS TOTALIZADOS DE NUMEROS O ENTEROS
+SELECT SUM(idPaciente) FROM paciente1
+
+--SUMA AGRUPADA POR PACIENTE Y APELLIDO ORGANUZANDO POR APELLIDO ALFABETICAMENTE
+SELECT SUM (idPaciente), apellido FROM paciente1 GROUP BY apellido
+
+--AVG PROMEDIO SOBRE UN REGISTRO DE NUMEROS 
+SELECT AVG(idPaciente) FROM paciente1 --Nos da como resultado un promedio del id Paciente
+
+
+--Funcion count--Se recomienda realizar con WHERE 
+select count (*) FROM paciente1  WHERE apellido = 'Ramirez' --Nos arroja 1 porque solamente hay un registro de registro con apelludo ramirez
+--Nos muestra cuantos registros hay en la tabla correspondietne
+
+
+--Funcion Having ..TRABAJA CON GROUP BY Y COUNT
+--Donde el valor sea = o > 6
+
+SELECT estado FROM turno GROUP BY estado HAVING estado = 0 --selecciona el estado del turno agrupado por estado, teniendo estado=0
+
+SELECT estado FROM turno GROUP BY estado HAVING COUNT (estado) > 3--Selecciona estado agrupado por estado teniendo en cuenta que el estado sea mayor que 0
+
+
+----OPERACIONES LOGICAS EN BASE DE DATOS
+--Trae los registros de paciente 1 donde apellido sea ? mendez y telefono sea = 123
+
+---OPERADOR_OR  Y AND 
+
+SELECT * FROM paciente1  WHERE  apellido = 'mendez' and  telefono = '123'
+
+--Trae los datos de paciente 1 donde el nombre es diego y el id paciente es = 7
+
+SELECT * FROM paciente1 WHERE	nombre = 'diego' and idPaciente = 7 and idPais = 'COL'
+
+--Cualquier consulta que se cumpla traera el resultado
+
+SELECT * FROM paciente1 WHERE	nombre = 'diego' or idPaciente = 7 or idPais = 'COL'
+
+
+---OPERADOR IN, trae valores que esten en ese estado o variable especifica
+
+--Que el estado este dentro de los valores numericos
+SELECT * FROM turno WHERE estado IN (0,1) --Nos devuelve el registro de estas condiciones 
+
+--Negacion del patron
+
+SELECT * FROM turno WHERE estado NOT IN (0,1) --Nos devuelve el registro de estas condiciones 
+
+SELECT * FROM paciente1 WHERE apellido  IN ('mendez','ramirez','pedro')
+
+--Negacion in Distinto al otro patron
+SELECT * FROM paciente1 WHERE apellido  NOT IN ('mendez','ramirez','pedro')
+
+--OPERADOR LIKE Sobre cadena nde caracteres filtrar los resultados de las consulta por algun caracter que exista en el campo
+
+SELECT * FROM paciente1  WHERE nombre LIKE 'diego'
+
+--DISTINTO AL OTRO PATRON
+SELECT * FROM paciente1  WHERE nombre not LIKE 'diego'
+
+SELECT * FROM paciente1  WHERE nombre LIKE 'diego'
+
+
+
+--RaNGO Between rango entre fecha o entre textos--Nos filtra los datos correspondientes a un rango de fechas
+
+SELECT * FROM turno
+--Traer la fecha en rangos especificos
+SELECT * FROM turno WHERE fechaTurno BETWEEN '20200302' and '20200303'
+--Traer el estado correspondiente al estado correspondiente al especificado.
+SELECT * FROM turno WHERE estado BETWEEN 3 AND 7
+
+
+
+
+
+
+SELECT * FROM paciente1
+
+
+
+
+
+--Me cuenta los numeros de registros de apellido en la tabla paciente1
+SELECT count(apellido) FROM paciente1
